@@ -1,0 +1,17 @@
+#step 3 create a workflow
+name: CI workflow
+#step 4 add event triggers
+on:
+  push:
+    #run the workflow on every push to the main branch
+    branches: [ "main" ]
+  pull_request:
+    #Run the workflow whenever a pull request is created to the main branch
+    branches: [ "main" ]
+#add a job
+jobs: 
+    #name job build
+    build:
+      #tell github actions to use the latest ubuntu runner
+      runs-on: ububtu-latest
+      container: python:3.9-slim
