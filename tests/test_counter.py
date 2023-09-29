@@ -78,12 +78,13 @@ class CounterTest(TestCase):
         """It should delete a counter"""
         # test deleting a name that does not exist
         name = '/counters/dontdeleteme'
-        result = self.delete(name)
+        result = self.client.delete(name)
+
         # confirm deletion failed and counter should return a 404
         self.assertEqual(result.status_code, status.HTTP_404_NOT_FOUND)
         # create counter
-        self.post(name)
+        self.client.post(name)
         # test deleting a name that is linked to a counter
-        result = self.delete(name)
+        result = self.client.delete(name)
         # confirm counter got deleting
         self.assertEqual(result.status_code, status.HTTP_204_NO_CONTENT)
