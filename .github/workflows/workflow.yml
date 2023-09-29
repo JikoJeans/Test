@@ -1,6 +1,6 @@
-#step 3 create a workflow
+#Task 1 step 3 create a workflow
 name: CI workflow
-#step 4 add event triggers
+#Task 1 step 4 add event triggers
 on:
   push:
     #run the workflow on every push to the main branch
@@ -8,12 +8,13 @@ on:
   pull_request:
     #Run the workflow whenever a pull request is created to the main branch
     branches: [ "main" ]
-#add a job
+#Task 1 step 5 add a job
 jobs: 
     #name job build
     build:
       #tell github actions to use the latest ubuntu runner
       runs-on: ubuntu-latest
+      #Task 1 step 6 target python 3.9
       container: python:3.9-slim
       #Task 2
       steps:
@@ -32,6 +33,7 @@ jobs:
       #Task 2 Part 4
       - name: Lint with Flake8
         #add 2 commands to activate flake scan
+        #replace service with '.'
         run: |
           flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
           flake8 . --count --max-complexity=10 --max-line-length=127 --statistics
