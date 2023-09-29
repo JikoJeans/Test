@@ -56,4 +56,4 @@ def delete_counter(name):
     # if it does, we need to delete it before returning a 204 status
     del COUNTERS[name]
     # now return success code
-    return {name: COUNTERS[name]}, status.HTTP_204_NO_CONTENT
+    return {"Message": f"Counter {name} has been deleted"}, status.HTTP_204_NO_CONTENT
