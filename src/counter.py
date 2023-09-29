@@ -11,8 +11,9 @@ COUNTERS = {}
 # specify the variable in route <name>
 # let Flask know that the only methods that is allowed to called
 # on this function is "POST".
-@app.route('/counters/<name>', methods=['POST'])
 
+
+@app.route('/counters/<name>', methods=['POST'])
 def create_counter(name):
     """Create a counter"""
     app.logger.info(f"Request to create counter: {name}")
@@ -23,18 +24,20 @@ def create_counter(name):
     COUNTERS[name] = 0
     return {name: COUNTERS[name]}, status.HTTP_201_CREATED
 
-# create a route for method PUT
-@app.route('/counters/<name>', methods=['PUT'])
 
+# create a route for method PUT
+
+@app.route('/counters/<name>', methods=['PUT'])
 def update_counter(name):
     # increment the counter by 1
     COUNTERS[name] = COUNTERS[name] + 1
     # return the new counter and a 200_ok return code
     return {name: COUNTERS[name]}, status.HTTP_200_OK
 
-# create a route for method GET
-@app.route('/counters/<name>', methods=['GET'])
 
+# create a route for method GET
+
+@app.route('/counters/<name>', methods=['GET'])
 def get_counter(name):
     # check to see if the name does not exist and return 404 if not
     if name not in COUNTERS:
