@@ -23,8 +23,8 @@ class CounterTest(TestCase):
     """Counter tests"""
 # refactored code from prof
     def setUp(self):
-        app = app.test_client()
-        # name = 'CounterName'
+        self.client = app.test_client()
+        #name = 'CounterName'
 
 # example 1
     def test_create_a_counter(self):
@@ -78,12 +78,12 @@ class CounterTest(TestCase):
         """It should delete a counter"""
         # test deleting a name that does not exist
         name = '/counters/dontdeleteme'
-        result = app.delete(name)
+        result = self.delete(name)
         # confirm deletion failed and counter should return a 404
-        app.assertEqual(result.status_code, status.HTTP_404_NOT_FOUND)
+        self.assertEqual(result.status_code, status.HTTP_404_NOT_FOUND)
         # create counter
-        app.post(name)
+        self.post(name)
         # test deleting a name that is linked to a counter
-        result = app.delete(name)
+        result = self.delete(name)
         # confirm counter got deleting
-        app.assertEqual(result.status_code, status.HTTP_204_NO_CONTENT)
+        self.assertEqual(result.status_code, status.HTTP_204_NO_CONTENT)
