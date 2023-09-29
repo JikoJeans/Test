@@ -24,7 +24,7 @@ class CounterTest(TestCase):
 # refactored code from prof
     def setUp(self):
         self.client = app.test_client()
-        #name = 'CounterName'
+        # name = 'CounterName'
 
 # example 1
     def test_create_a_counter(self):
