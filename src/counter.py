@@ -1,9 +1,9 @@
 from flask import Flask
 
-app = Flask(__name__)
-
 # we need to import the file that contains the status codes
 from src import status
+
+app = Flask(__name__)
 
 COUNTERS = {}
 
@@ -16,29 +16,25 @@ def create_counter(name):
     """Create a counter"""
     app.logger.info(f"Request to create counter: {name}")
     global COUNTERS
-    #line added from example
+    # line added from example
     if name in COUNTERS:
         return {"Message":f"Counter {name} already exists"}, status.HTTP_409_CONFLICT
     COUNTERS[name] = 0
     return {name: COUNTERS[name]}, status.HTTP_201_CREATED
 
-#create a route for method PUT
+# create a route for method PUT
 @app.route('/counters/<name>', methods=['PUT'])
 def update_counter(name):
-    #increment the counter by 1
+    # increment the counter by 1
     COUNTERS[name] = COUNTERS[name] + 1
-    #return the new counter and a 200_ok return code
+    # return the new counter and a 200_ok return code
     return {name: COUNTERS[name]}, status.HTTP_200_OK
 
-#create a route for method GET
+# create a route for method GET
 @app.route('/counters/<name>', methods=['GET'])
 def get_counter(name):
-    #check to see if the name does not exist and return 404 if not
+    # check to see if the name does not exist and return 404 if not
     if name not in COUNTERS:
-        return {"Message":f"Counter {name} does not exists"}, status.HTTP_404_NOT_FOUND
-    #if the name is in the counters list then return a status code okay
+        return {"Message": f"Counter {name} does not exists"}, status.HTTP_404_NOT_FOUND
+    # if the name is in the counters list then return a status code okay
     return {name: COUNTERS[name]}, status.HTTP_200_OK
-
-
-
-
