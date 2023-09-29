@@ -86,4 +86,3 @@ class CounterTest(TestCase):
         result = counter.delete('/counters/dontDeleteMe')
         # confirm counter got deleting
         self.assertEqual('/counters/dontDeleteMe')
-        
