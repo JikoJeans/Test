@@ -13,7 +13,7 @@ jobs:
     #name job build
     build:
       #tell github actions to use the latest ubuntu runner
-      runs-on: ububtu-latest
+      runs-on: ubuntu-latest
       container: python:3.9-slim
       #Task 2
       steps:
@@ -39,4 +39,5 @@ jobs:
       #Task 2 Part 5
       - name: Run Unit tests with nose
       #run nosetests command to test your code and report on code coverage
-        run:  nosetests -v --with-spec --spec-color --with-coverage --cover-package=app
+        run:  |
+        nosetests -v --with-spec --spec-color --with-coverage --cover-package=app
