@@ -18,12 +18,13 @@ from src.counter import app
 # we need to import the file that contains the status codes
 from src import status
 
+
 class CounterTest(TestCase):
     """Counter tests"""
 # refactored code from prof
     def setUp(self):
         self.client = app.test_client()
-        name = 'CounterName'
+        #name = 'CounterName'
 
 # example 1
     def test_create_a_counter(self):
