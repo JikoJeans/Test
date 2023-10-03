@@ -41,4 +41,5 @@ jobs:
       #Task 2 Part 5
       - name: Run Unit tests with nose
       #run nosetests command to test your code and report on code coverage
-        run:  nosetests -v --with-spec --spec-color --with-coverage --cover-package=app
+      #replace app with tests to ensure cover-package is imported
+        run:  nosetests -v --with-spec --spec-color --with-coverage --cover-package=tests
